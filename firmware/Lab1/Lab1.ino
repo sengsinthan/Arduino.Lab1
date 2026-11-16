@@ -16,19 +16,24 @@ const unsigned long BAUD_RATE = 9600;   // must match the C# app
 
 String inputLine;   // collects characters until we see a newline
 
-void setup() {
+void setup() 
+{
   Serial.begin(BAUD_RATE);
   pinMode(LED_BUILTIN, OUTPUT);
   digitalWrite(LED_BUILTIN, LOW);
   Serial.println("BOOT ready");   // the app sees this as soon as it connects
 }
 
-void loop() {
+void loop() 
+{
   // Build up a line one character at a time; act on it at the newline.
-  while (Serial.available() > 0) {
+  while (Serial.available() > 0) 
+  {
     char c = (char)Serial.read();
-    if (c == '\n' || c == '\r') {
-      if (inputLine.length() > 0) {
+    if (c == '\n' || c == '\r') 
+    {
+      if (inputLine.length() > 0) 
+      {
         handleCommand(inputLine);
         inputLine = "";
       }
@@ -41,15 +46,22 @@ void loop() {
 void handleCommand(String cmd) {
   cmd.trim();   // drop stray spaces
 
-  if (cmd.equalsIgnoreCase("PING")) {
+  if (cmd.equalsIgnoreCase("PING")) 
+  {
     Serial.println("PONG");
-  } else if (cmd.equalsIgnoreCase("LED ON")) {
+  } 
+  else if (cmd.equalsIgnoreCase("LED ON")) 
+  {
     digitalWrite(LED_BUILTIN, HIGH);
     Serial.println("OK LED=ON");
-  } else if (cmd.equalsIgnoreCase("LED OFF")) {
+  }
+  else if (cmd.equalsIgnoreCase("LED OFF")) 
+  {
     digitalWrite(LED_BUILTIN, LOW);
     Serial.println("OK LED=OFF");
-  } else {
+  }
+  else 
+  {
     Serial.print("ERR ");
     Serial.println(cmd);
   }
