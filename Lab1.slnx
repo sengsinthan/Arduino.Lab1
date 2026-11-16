@@ -1,0 +1,6 @@
+<Solution>
+  <Folder Name="/firmware/">
+    <File Path="firmware/Lab1/Lab1.ino" />
+  </Folder>
+  <Project Path="Lab1/Lab1.csproj" />
+</Solution>
